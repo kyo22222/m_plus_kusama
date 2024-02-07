@@ -1,0 +1,1794 @@
+<!doctype html>
+<html>
+<head>
+<title>M+ 一週年特別展覽︱ 草間彌生：一九四五年至今</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"  media="screen and (min-width: 767px)"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="js/anime.min.js"></script>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400&display=swap');
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: normal;
+        }
+		*:focus {
+			-webkit-tap-highlight-color: transparent !important;
+			outline: none !important;
+			-ms-touch-action: manipulation !important;
+			touch-action: manipulation !important;
+		}
+
+		svg{
+			shape-rendering : optimizeSpeed
+		}
+        
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+		
+		.contain-fluid{
+			width: 100%;
+			margin: auto;
+			position: relative;
+			z-index: 2;
+		}
+		.fixbg{
+			width: 100vw;
+			height: 100vh;
+			top: 0;
+			left: 0;
+			margin: auto;
+			background-color: #f4f4f4;
+			background-image: url(images/bg.jpg);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: fixed;
+			z-index: 1;
+		}
+
+
+		.img-center{
+			display: block;
+			margin: auto;
+		}
+		.img-responsive{
+			width: auto;
+			max-width: 100%;
+		}
+		
+		.lang, .backto10{
+			position: absolute;
+			top: 75px;
+			right: 150px;
+			color: #464850;
+			font-size: 16px;
+			z-index: 5;
+			border: 1px solid #ccc;
+			padding: 5px 9px;
+			/* border-radius: 100%; */
+    		border-radius: 55% 100% 65% 100%;
+		}
+		.lang a, .backto10 a{
+			color: #464850;
+			font-size: 16px;
+			text-decoration: none;
+		}
+		.backto10 {
+			right: 200px;
+			padding: 5px 19px;
+			display: none;
+		}
+
+		.swiper-container {
+			width: 100%;
+			height: 100vh;
+			overflow: hidden;
+			position: relative;
+		}
+		.swiper-pagination-d{
+			position: fixed;
+			left: 150px !important;
+			right: auto !important;
+			top: auto !important;
+			bottom: 60px !important;
+			transform: rotate(90deg);
+			right: auto;
+			width: auto !important;
+			transform: translate3d(10px, 10px, 10px) !important;
+		}
+		.swiper-pagination-bullet{
+			width: 50px;
+			height: 50px;
+			margin: 7px !important;
+			transition: all 0.3s ease;
+		}
+
+		.swiper-slide{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.swiper-slide .content_txt, .swiper-slide .animation, .ball_contain{opacity: 0; transition: all 1s ease; transition-delay: 0.75s;}
+		.swiper-slide-active .content_txt, .swiper-slide-active .animation, .swiper-slide-active .ball_contain{opacity: 1;}
+
+
+		.swiper-pagination-d::before,.swiper-pagination-d::after{
+			content: '';
+			position: absolute;
+			width: 55px;
+			left: 7px;
+			top: 40px;
+			transform: rotate(30deg);
+			border-top: 2px solid #76777c;
+			opacity: 0.8;
+		}
+		.swiper-pagination-d::after{
+			top: 20px;
+		}
+		.swiper-pagination-d .swiper-pagination-bullet{
+			opacity: 0.4;
+			padding: 5px;
+			background: #000;
+			border-radius: 55% 100% 65% 100%;
+			transform: rotate(-3deg);
+		}
+
+		.swiper-pagination-d .swiper-pagination-bullet:first-child, .swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active:first-child,
+		.swiper-pagination-d .swiper-pagination-bullet:first-child:hover, .swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active:first-child:hover{
+			/* visibility: hidden; */
+			opacity: 0;
+		}
+
+		.swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active:nth-child(2), .swiper-pagination-d.onball .swiper-pagination-bullet:nth-child(2), .swiper-pagination-d .swiper-pagination-bullet:nth-child(2):hover{
+			background: #ffdd01;
+		}
+		.swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active:nth-child(3), .swiper-pagination-d.onball .swiper-pagination-bullet:nth-child(3), .swiper-pagination-d .swiper-pagination-bullet:nth-child(3):hover{
+			background: #78d8ff;
+		}
+		.swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active:nth-child(4), .swiper-pagination-d.onball .swiper-pagination-bullet:nth-child(4), .swiper-pagination-d .swiper-pagination-bullet:nth-child(4):hover{
+			background: #02b259;
+		}
+		.swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active:last-child, .swiper-pagination-d.onball .swiper-pagination-bullet:last-child, .swiper-pagination-d .swiper-pagination-bullet:last-child:hover{
+			background: #da2227;
+		}
+
+		.swiper-pagination-d .swiper-pagination-bullet.swiper-pagination-bullet-active, .swiper-pagination-d.onball .swiper-pagination-bullet, .swiper-pagination-d .swiper-pagination-bullet:hover{
+			opacity: 1;
+		}
+
+		.hkt{
+			position: fixed;
+			left: 150px;
+			top: 75px;
+			z-index: 2;
+		}
+		.slogan{
+			position: fixed;
+			left: 100px;
+			top: 195px;
+			width: 40px;
+			height: auto;
+			z-index: 2;
+			text-orientation: upright;
+			font-size: 40px;
+			color: #464850;
+		}
+		footer{
+			position: fixed;
+			z-index: 10;
+			bottom: 20px;
+			width: 100%;
+			padding: 0 20px;
+			max-width: 980px;
+    		left: calc(50% - 490px);
+			display: flex;
+    		flex-direction: row;
+			justify-content: center;
+		}
+		.logocon{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		.hidd-xs{
+			display: block;
+		}
+		.visbl-xs{
+			display: none;
+		}
+
+		/**************/
+		.ball_contain{
+			width: 100%;
+			height: 100%;
+			display: block;
+			position: relative;
+		}
+		.ball_contain .content_txt{
+			right: 20%;
+    		bottom: 15%;
+			position: absolute;
+		}
+		.ball{
+			border-radius: 100%;
+			width: 600px;
+			height: 600px;
+			position: absolute;
+			transition: all 0.3s ease;
+			background-position: center center;
+			background-size: auto;
+			transform: scale(0.5);
+			cursor: pointer;
+			will-change: transform;
+		}
+		.ball svg{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.ball svg path{
+			fill: #fff;
+		}
+		.ball .painting{
+			transition: all 0.3s ease;
+    		will-change: filter transform;
+			position: relative;
+		}
+		.ball .painting:before{
+			content: '';
+			position:absolute;
+			border-radius: 100%;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.2);
+			background-image: url(images/click.png);
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 100px 100px;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: all 0.75s ease;
+		}
+		.ball .painting.clickhints:before{
+			opacity: 1;
+		}
+
+		
+		/**ball1 active**/
+		.ball1_active .ball1{
+			left: 21%;
+			top: 7%;
+			transform: scale(0.45);
+		}
+		.ball1_active .ball2{
+			left: 45%;
+    		top: -5%;
+			transform: scale(0.38);
+		}
+		.ball1_active .ball3{
+			left: 37%;
+    		top: 45%;
+			transform: scale(0.44);
+		}
+		.ball1_active .ball4{
+			left: 49%;
+			top: 22%;
+			transform: scale(0.47);
+		}
+
+		/**ball2 active**/
+		.ball2_active .ball1{
+			left: 21%;
+			top: 7%;
+			transform: scale(0.45);
+		}
+		.ball2_active .ball2{
+			left: 45%;
+			top: 5%;
+			transform: scale(0.38);
+		}
+		.ball2_active .ball3{
+			left: 15%;
+			top: 35%;
+			transform: scale(0.44);
+		}
+		.ball2_active .ball4{
+			left: 29%;
+			top: 40%;
+			transform: scale(0.47);
+		}
+
+		/**ball3 active**/
+		.ball3_active .ball1{
+			left: 33%;
+    		top: -5%;
+			transform: scale(0.45);
+		}
+		.ball3_active .ball2{
+			left: 48%;
+			top: 5%;
+			transform: scale(0.38);
+		}
+		.ball3_active .ball3{
+			left: 19%;
+			top: 30%;
+			transform: scale(0.44);
+		}
+		.ball3_active .ball4{
+			left: 42%;
+    		top: 32%;
+			transform: scale(0.47);
+		}
+
+		/**ball4 active**/
+		.ball4_active .ball1{
+			left: 12%;
+    		top: 15%;
+			transform: scale(0.45);
+		}
+		.ball4_active .ball2{
+			left: 25%;
+    		top: -3%;
+			transform: scale(0.38);
+		}
+		.ball4_active .ball3{
+			left: 27%;
+			top: 35%;
+			transform: scale(0.44);
+		}
+		.ball4_active .ball4{
+			left: 45%;
+   			top: 10%;
+			transform: scale(0.47);
+		}
+
+
+		.ball.active{
+			transform: scale(.9);
+			background-size: 100%;
+			z-index: 5;
+		}
+		.painting{
+			position: absolute;
+			top: 45px;
+			left: 45px;
+			width: calc(100% - 90px);
+			height: calc(100% - 90px);
+			border-radius: 100%;
+			z-index: 4;
+			background-position: center;
+    		background-size: cover;
+		}
+
+		.ball.active .painting{
+			transform: scale(.7);
+			border-radius: 0;
+		}
+		.ball.active svg{
+			transform: scale(0);
+		}
+		.ball svg{
+			transition: all 0.5s ease;
+		}
+		.ball .painting::after{
+			position: absolute;
+			content: '';
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transform: rotate(5deg);
+			background-color: #fff;
+			transition: all 0.3s ease;
+			opacity: 0;
+			mix-blend-mode: color-burn;
+		}
+		.ball.active .painting::after{
+			transform: rotate(-5deg);
+			opacity: 1;
+		}
+
+		.disc{
+			padding: 10px 25px;
+			width: 480px;
+			font-size: 15px;
+			color: #fff;
+			position: absolute;
+			z-index: 10;
+			background: rgb(139 139 139 / 75%);
+			border-radius: 0;
+			box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+			backdrop-filter: blur(11.8px);
+			transition: all 1.2s ease;
+			transform: translateX(25%);
+			opacity: 0;
+			pointer-events: none;
+		}
+		.ball1 .disc{
+			left: 10%;
+    		bottom: 0;
+		}
+		.ball2 .disc{
+			left: 75%;
+    		bottom: 10%;
+		}
+		.ball3 .disc {
+			left: 10%;
+    		bottom: 0;
+		}
+		.ball4 .disc {
+			left: 75%;
+    		bottom: 10%;
+		}
+		.ball.active .disc{
+			transform: translateX(0);
+			opacity: 1;
+		}
+
+		.contain{
+			width: 100%;
+			max-width: 1440px;
+			height: 100%;
+			margin: auto;
+			position: relative;
+		}
+		.contain .content_txt{
+			position: absolute;
+		}
+		
+		.animation {
+			width: 600px;
+			height: 600px;
+			display: inline-block;
+		}
+		.anibg{
+			position: relative;
+		}
+		.anibg svg{
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;
+			transform-origin: top;
+		}
+		.anibg .txtcon{
+			position: absolute;
+			z-index: 3;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.anibg .txtcon h4, .anibg .txtcon p, .anibg .txtcon em{
+			color: #464850;
+			margin: 0;
+		}
+		.anibg svg path{
+			fill: #fff;
+		}
+		.anibg svg path.dark, .ball svg path.dark{
+			fill: rgba(255,255,255,0.25);
+		}
+
+		/******cont1*****/
+		.contain.cont_1 .content_txt{
+			top: 19%;
+			left: 10%;
+			z-index: 2;
+		}
+		.contain.cont_1 .animation{
+			top: 23.5%;
+			left: 43%;
+			z-index: 1;
+		}
+		.contain.cont_1 .anibg svg{
+			transform: translateY(-80px) scale(1.05);
+		}
+		.contain.cont_1 .anibg .txtcon{
+			left: 5em;
+			top: 10em;
+			width: calc(100% - 146px);
+		}
+
+		/******cont2*****/
+		.contain.cont_2 .content_txt{
+			top: 19%;
+			left: 18%;
+			z-index: 2;
+		}
+		.contain.cont_2 .animation{
+			top: 23.5%;
+			left: 38%;
+			z-index: 2;
+		}
+		.contain.cont_2 .anibg svg{
+			transform: translateY(-80px) scale(1.05);
+		}
+		.contain.cont_2 .anibg .txtcon{
+			left: 5em;
+			top: 8em;
+			width: calc(100% - 146px);
+			text-align: center;
+		}
+		.contain.cont_2 .anibg .txtcon h4{
+			font-size: 20px;
+			font-weight: 600;
+		}
+		.contain.cont_2 .anibg .txtcon p{
+			margin-bottom: 15px;
+		}
+
+		/******cont4*****/
+		.contain.cont_4 .content_txt{
+			top: 19%;
+			left: 12%;
+			z-index: 3;
+		}
+		.contain.cont_4 .animation{
+			top: 23.5%;
+			left: 43%;
+			z-index: 2;
+		}
+		.contain.cont_4 .anibg svg{
+			transform: translateY(-80px) scale(1.05);
+		}
+		.contain.cont_4 .anibg .txtcon{
+			left: 5em;
+			top: 8em;
+			width: calc(100% - 146px);
+			text-align: center;
+		}
+		.contain.cont_4 .anibg .txtcon h4{
+			font-size: 20px;
+		}
+		.contain.cont_4 .anibg .txtcon p{
+			margin-bottom: 15px;
+		}
+		.redbtn{
+			border-radius: 30px;
+			background-color: #da2227;
+			color: #fff;
+			padding: 5px 20px;
+			text-decoration: none;
+			letter-spacing: 0.5em;
+			font-size: 24px;
+			width: 290px;
+			margin-top: 20px;
+			margin: auto;
+			transform: translateX(50%) translateY(50%);
+		}
+		.redbtn img{
+			display: inline;
+			vertical-align: bottom;
+			position: relative;
+    		bottom: 5px;
+			width: 30px;
+		}
+
+		@media (max-width: 1441px){
+			
+			.lang, .backto10 {
+				top: 35px
+			}
+			
+			.hkt {
+				left: 80px;
+				top: 35px;
+			}
+			.slogan {
+				left: 38px;
+				top: 140px;
+			}
+			.swiper-pagination-d {
+				left: 85px !important;
+			}
+			.kv1{
+				width: 60%;
+				margin-top: -20px;
+				margin-bottom: 30px;
+			}
+			
+			.contain.cont_1 .content_txt {
+				top: 29%;
+				left: 25%;
+				width: 300px;
+			}
+			.contain.cont_1 .animation{
+				top: 20.5%;
+				left: 43%;
+				z-index: 1;
+			}
+
+			.contain.cont_2 .content_txt {
+				top: 29%;
+				left: 25%;
+				width: 300px;
+				z-index: 2;
+			}
+			.contain.cont_2 .animation{
+				top: 20.5%;
+				left: 43%;
+				z-index: 1;
+			}
+			.contain.cont_4 .content_txt {
+				top: 33%;
+				left: 15%;
+				width: 500px;
+				z-index: 2;
+			}
+			.contain.cont_4 .animation{
+				top: 20.5%;
+				left: 43%;
+				z-index: 1;
+			}
+
+/**ball1 active**/
+.ball1_active .ball1{
+			left: 6%;
+			top: 7%;
+			transform: scale(0.45);
+		}
+		.ball1_active .ball2{
+			left: 32%;
+			top: -10%;
+			transform: scale(0.38);
+		}
+		.ball1_active .ball3{
+			left: 31%;
+			top: 23%;
+			transform: scale(0.44);
+		}
+		.ball1_active .ball4{
+			left: 49%;
+			top: 7%;
+			transform: scale(0.47);
+		}
+
+		/**ball2 active**/
+		.ball2_active .ball1{
+			left: 0%;
+			top: 11%;
+			transform: scale(0.4);
+		}
+		.ball2_active .ball2{
+			left: 45%;
+			top: 0%;
+			transform: scale(0.38);
+		}
+		.ball2_active .ball3{
+			left: 20%;
+			top: 29%;
+			transform: scale(0.44);
+		}
+		.ball2_active .ball4{
+			left: 19%;
+			top: -9%;
+			transform: scale(0.47);
+		}
+
+		/**ball3 active**/
+		.ball3_active .ball1{
+			left: 29%;
+			top: -10%;
+			transform: scale(0.35);
+		}
+		.ball3_active .ball2{
+			left: 45%;
+			top: 5%;
+			transform: scale(0.38);
+		}
+		.ball3_active .ball3{
+			left: 8%;
+    		top: 15%;
+			transform: scale(0.44);
+		}
+		.ball3_active .ball4{
+			left: 32%;
+			top: 32%;
+			transform: scale(0.4);
+		}
+
+		/**ball4 active**/
+		.ball4_active .ball1{
+			left: 2%;
+    		top: 8%;
+			transform: scale(0.45);
+		}
+		.ball4_active .ball2{
+			left: 20%;
+    		top: -3%;
+			transform: scale(0.38);
+		}
+		.ball4_active .ball3{
+			left: 25%;
+			top: 31%;
+			transform: scale(0.40);
+		}
+		.ball4_active .ball4{
+			left: 46%;
+			top: 2%;
+			transform: scale(0.47);
+		}
+
+			/***act***/
+			.ball.active {
+				transform: scale(.65);
+			}
+
+		}
+
+		@media (max-width: 1280px){
+			footer {
+				max-width: 768px;
+				left: calc(50% - 384px);
+			}
+
+			.kv1{
+				width: 60%;
+				margin-top: -20px;
+			}
+			
+			.ball_contain .content_txt {
+				right: 4%;
+			}
+			.contain .content_txt {
+				top: 29% !important;
+				left: 19% !important;
+			}
+			.contain .animation {
+				top: 20.5% !important;
+				left: 40% !important;
+			}
+			.contain .anibg svg{
+				transform: translateY(0px) scale(0.8) !important;
+			}
+			.contain.cont_4 .content_txt {
+				width: 450px;
+			}
+			.ball4_active .ball2 {
+				left: 16%;
+				top: -3%;
+				transform: scale(0.38);
+			}
+			.ball3_active .ball3 {
+				left: 6%;
+				transform: scale(0.38);
+			}
+			.ball4_active .ball1 {
+				left: 0%;
+				top: 22%;
+				transform: scale(0.40);
+			}
+			.ball4_active .ball2 {
+				left: 13%;
+				top: -3%;
+				transform: scale(0.38);
+			}
+			.ball4_active .ball3 {
+				left: 23%;
+				top: 33%;
+				transform: scale(0.37);
+			}
+			.ball4_active .ball4 {
+				left: 41%;
+				top: 4%;
+			}
+
+			/***act***/
+			.ball.active {
+				transform: scale(.60);
+			}
+			.disc {
+				width: 380px;
+			}
+			.ball2 .disc {
+				left: 50%;
+				bottom: 0;
+			}
+			.ball4 .disc {
+				left: 65%;
+				bottom: 15%;
+			}
+
+		}
+
+		/*******t time!*******/
+		@media (max-width: 1023px){
+			
+			.contain-fluid {
+				padding-top: 30px; 
+				min-height: 100vh;
+				background-size: auto;
+			}
+			.hkt, footer {
+				position: relative;
+			}
+
+			.lang {
+				right: 20px;
+				top: 20px;
+			}
+			.backto10 {
+				right: 70px;
+				top: 20px;
+			}
+
+			footer {
+				left: 0;
+				max-width: unset;
+			}
+			footer img {
+				width: auto !important;
+				margin: auto;
+				display: block;
+			}
+
+			.kv1{
+				margin-top: 0;
+				margin-bottom: 60px;
+			}
+			.hkt {
+				left: 20px;
+				top: 0px;
+				width: fit-content;
+			}
+			.hkt img{
+				width: auto;
+				max-width: 100%;
+			}
+
+			.slogan {
+				left: 20px;
+				top: 0px;
+				width: fit-content;
+				font-size: 32px;
+				text-orientation: inherit;
+				position: relative;
+			}
+
+			.animation {
+				width: auto;
+				height: 450px;
+			}
+			.swiper-container {
+				height: 100%;
+			}
+			.swiper-pagination-d {
+				left: auto !important;
+				right: auto !important;
+				transform: rotate(0deg) !important;
+				bottom: auto !important;
+				top: 0px !important;
+				position: relative;
+				width: 220px !important;
+				float: right;
+			}
+			.swiper-slide-active{
+				z-index: 5;
+			}
+			.swiper-pagination-bullet {
+				width: 25px;
+				height: 25px;
+			}
+			.swiper-pagination-d::before,.swiper-pagination-d::after {
+				width: 30px;
+				content: '';
+				position: absolute;
+				left: 15px;
+				top: 19px;
+				transform: rotate(-50deg);
+				border-top: 2px solid #76777c;
+			}
+			.swiper-pagination-d::after {
+				left: -5px;
+			}
+
+			.contain .content_txt {
+				top: 0 !important;
+				left: 0px !important;
+				position: relative;
+				transform: translateX(16.6667%);
+			}
+			.contain .animation {
+				top: 0 !important;
+				left: 0px !important;
+				position: relative;
+				width: 100%;
+				transform: translateY(-12%);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.contain.cont_1 .anibg svg, .contain.cont_2 .anibg svg, .contain.cont_4 .anibg svg{
+				width: 600px !important;
+				transform: scale(1) translateX(calc(50% - 300px)) !important;
+				height: 100% !important;
+				left: calc(50% - 300px);
+			}
+
+			.contain.cont_2 .content_txt {
+				width: 240px;
+			}
+
+			.contain.cont_1 .content_txt {
+				width: 350px;
+			}
+			.contain .anibg .txtcon {
+				left: 0px !important;
+				top: 30px !important;
+				width: 100% !important;
+				text-align: center;
+				padding: 20px 40px;
+				position: relative;
+			}
+			.contain.cont_4 .content_txt {
+				width: 60%;
+				transform: translateX(16.6667%);
+			}
+
+
+			.ball_contain{
+				height: 700px;
+    			width: 700px;
+				margin: auto;
+			}
+			.ball_contain .content_txt {
+				right: 10px;
+				width: 220px;
+				top: 30px;
+				bottom: auto;
+			}
+			
+			
+			.ball1_active .ball1 {
+				left: 28%;
+    			top: 5%;
+				transform: scale(0.45);
+			}
+			.ball1_active .ball2 {
+				left: -10%;
+    			top: -25%;
+				transform: scale(0.3);
+			}
+			.ball1_active .ball3 {
+				left: -7%;
+				top: 30%;
+				transform: scale(0.29);
+			}
+			.ball1_active .ball4 {
+				left: -21%;
+    			top: 4%;
+				transform: scale(0.37);
+			}
+
+			.ball2_active .ball2 {
+				left: -15%;
+    			top: -20%;
+				transform: scale(0.38);
+			}
+			.ball2_active .ball1 {
+				left: -19%;
+				top: 20%;
+				transform: scale(0.30);
+			}
+			.ball2_active .ball3 {
+				left: 30%;
+    			top: -2%;
+				transform: scale(0.33);
+			}
+			.ball2_active .ball4 {
+				left: 12%;
+    			top: 23%;
+				transform: scale(0.32);
+			}
+			.ball3_active .ball1 {
+				left: 11%;
+				top: -22%;
+				transform: scale(0.35);
+			}
+			.ball3_active .ball2 {
+				left: -20%;
+				top: -16%;
+				transform: scale(0.38);
+			}
+			.ball3_active .ball3 {
+				left: 4%;
+				top: 18%;
+			}
+			.ball3_active .ball4 {
+				left: 42%;
+    			top: 12%;
+				transform: scale(0.31);
+			}
+
+			.ball4_active .ball1 {
+				left: 12%;
+				top: 23%;
+				transform: scale(0.31);
+			}
+			.ball4_active .ball2 {
+				left: 31%;
+				top: -2%;
+				transform: scale(0.28);
+			}
+			.ball4_active .ball3 {
+				left: 41%;
+				top: 29%;
+				transform: scale(0.33);
+			}
+			.ball4_active .ball4 {
+				left: -36%;
+    			top: -14%;
+			}
+
+			.ball.active .disc {
+				transform: translateX(0) scale(1.2);
+			}
+			.ball1 .disc {
+				left: 20%;
+				bottom: -5%;
+			}
+			.ball2 .disc {
+				left: 20%;
+				bottom: 0;
+			}
+			.ball3 .disc {
+				left: -20%;
+				top: 88%;
+			}
+			.ball4 .disc {
+				left: -5%;
+				bottom: -20%;
+			}
+
+			.m_plus_con4{
+				width: 260px;
+			}
+			.contain.cont_4 .animation{
+				height: 320px;
+			}
+
+			/***act***/
+			.ball.active {
+				transform: scale(.6);
+			}
+
+			.redbtn{
+				transform: translateX(50%) translateY(25%);
+			}
+
+		}
+
+/*******===================================MOBILE=====================================*******/
+		@media (max-width: 767px){
+
+			.lang {
+				top: 70px;
+				right: 10px;
+			}
+			.backto10 {
+				top: 24px;
+				right: 10px;
+			}
+
+			.hidd-xs{
+				display: none;
+			}
+			.visbl-xs{
+				display: block;
+			}
+			
+			.contain-fluid {
+				padding-top: 30px; 
+				min-height: 100vh;
+				background-size: auto;
+			}
+
+			.ball_contain{
+				width: 320px;
+				max-width: unset;
+				margin: auto;
+				max-height: unset;
+				height: 900px;
+				display: block;
+				position: relative;
+			}
+			.ball_contain .content_txt{
+				left: auto;
+				right: 0px;
+				top: 0px;
+				position: absolute;
+			}
+
+			.hkt, footer {
+				position: relative;
+			}
+
+			footer {
+				left: 0;
+				bottom: 0;
+				position: fixed;
+				max-width: unset;
+				padding: 40px 20px 20px;
+				background: rgb(255,255,255);
+				background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 33%);
+				display: table;
+			}
+			.logocon:last-child{
+				width: 75%;
+				margin: auto
+			}
+
+			.kv1{
+				width: 100%;
+				margin-top: 0px;
+				margin-bottom: 30px;
+			}
+
+			.hkt {
+				left: 20px;
+				top: 0px;
+				width: 256px;
+			}
+			.hkt img{
+				width: auto;
+				max-width: 100%;
+			}
+
+			.slogan {
+				left: 20px;
+				top: 0px;
+				width: calc(100% - 40px);
+				font-size: 30px;
+				text-orientation: inherit;
+				position: relative;
+				letter-spacing: 0.08em;
+			}
+
+			.contain.cont_1 .content_txt {
+				transform: translateX(15px);
+			}
+			.contain.cont_4 .content_txt {
+				width: 90%;
+				transform: translateX(15px) translateY(-4%);
+			}
+			.contain .animation {
+				transform: translateY(-8%);
+			}
+
+			.m_plus_con4 {
+				width: 200px;
+			}
+
+			.contain .anibg .txtcon {
+				top: 0px !important;
+			}
+			.contain.cont_2 .anibg .txtcon {
+				top: 8em;
+			}
+
+			/**ball1 act**/
+			.ball1_active .ball1 {
+				left: -101px;
+				top: 86px;
+				transform: scale(0.30);
+			}
+			.ball1_active .ball2 {
+				left: -231px;
+				top: -108px;
+			}
+			.ball1_active .ball3 {
+				left: -220px;
+				top: 320px;
+				transform: scale(0.33);
+			}
+			.ball1_active .ball4 {
+				left: -30px;
+				top: 430px;
+				transform: scale(0.32);
+			}
+
+			/**ball2 act**/
+			.ball2_active .ball1 {
+				left: -50px;
+				top: 220px;
+				transform: scale(0.30);
+			}
+			.ball2_active .ball2 {
+				left: -180px;
+				top: -25px;
+			}
+			.ball2_active .ball3 {
+				left: -220px;
+				top: 320px;
+				transform: scale(0.33);
+			}
+			.ball2_active .ball4 {
+				left: -30px;
+				top: 430px;
+				transform: scale(0.32);
+			}
+			
+			/**ball3 act**/
+			.ball3_active .ball1 {
+				left: -50px;
+				top: -20px;
+				transform: scale(0.30);
+			}
+			.ball3_active .ball2 {
+				left: -220px;
+				top: -89px;
+			}
+			.ball3_active .ball3 {
+				left: -194px;
+				top: 180px;
+				transform: scale(0.33);
+			}
+			.ball3_active .ball4 {
+				left: -50px;
+				top: 400px;
+				transform: scale(0.32);
+			}
+			
+			/**ball4 act**/
+			.ball4_active .ball1 {
+				left: -50px;
+				top: -62px;
+				transform: scale(0.30);
+			}
+			.ball4_active .ball2 {
+				left: -220px;
+				top: -129px;
+			}
+			.ball4_active .ball3 {
+				left: -234px;
+				top: 58px;
+				transform: scale(0.33);
+			}
+			.ball4_active .ball4 {
+				left: -106px;
+				top: 287px;
+				transform: scale(0.32);
+			}
+
+			.ball1 .disc {
+				left: 20%;
+				bottom: -5%;
+			}
+			.ball2 .disc {
+				left: 20%;
+				bottom: 0;
+			}
+			.ball3 .disc {
+				left: 140px;
+				/* top: 0; */
+				bottom: auto;
+			}
+			.ball4 .disc {
+				left: 90px;
+				bottom: -100px;
+			}
+
+			
+			.ball.active {
+				transform: scale(.6);
+			}
+			.redbtn{
+				transform: translateX(0%) translateY(0%);
+			}
+			.swiper-slide .content_txt, .swiper-slide .animation, .ball_contain{
+				opacity: 1;
+			}
+
+			.mb_kv{
+				height: 70vh;
+				min-height: 450px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				transform: translateY(-30px);
+				transition: all 1s ease;
+			}
+			.mobile-onball{
+				margin: 0;
+				padding: 0;
+				width: 220px;
+				z-index: 5;
+				position: absolute;
+				right: 10px;
+				top: 10px;
+			}
+			.mobile-onball li{
+				display: inline-block;
+				background: #000;
+				border-radius: 55% 100% 65% 100%;
+				transform: rotate(-3deg);
+				cursor: pointer;
+				width: 25px;
+    			height: 25px;
+				margin: 7px;
+			}
+			.mobile-onball li:nth-child(1){
+				opacity: 0;
+			}
+			.mobile-onball li:nth-child(2){
+				background: #ffdd01;
+			}
+			.mobile-onball li:nth-child(3){
+				background: #78d8ff;
+			}
+			.mobile-onball li:nth-child(4){
+				background: #02b259;
+			}
+			.mobile-onball li:last-child{
+				background: #da2227;
+			}
+			.mobile-onball li a{display: block; height: 100%; width: 100%;}
+			.mobile-onball::before, .mobile-onball::after {
+				width: 30px;
+				content: '';
+				position: absolute;
+				left: 10px;
+				top: 19px;
+				transform: rotate(-50deg);
+				border-top: 2px solid #76777c;
+			}
+			.mobile-onball::after {
+				left: -10px;
+			}
+
+		}
+
+	</style>
+<script>
+	$(document).ready(function() {
+		$('.ball').on('click', function () {
+			$('.ball').removeClass('active');
+			$(this).addClass('active');
+			var onball = $(this).attr('data-ball')+'_active';
+			$('.ball_contain').removeClass('ball1_active ball2_active ball3_active ball4_active').addClass(onball);
+		});
+		
+		$('.mobile-onball a').on('click', function () {
+			var thisHR = $(this).attr('data-href');
+			$("html, body").animate({ scrollTop: $(thisHR).offset().top - (($(window).height() / 2) - ($(thisHR).outerHeight() / 2))});
+		});
+	});
+</script>
+</head>
+
+<body>
+	<!--div class="backto10"><a href="https://www.1010.com.hk/tc">返回1O1O</a></div-->
+	<div class="lang"><a href="index_en.html">EN</a></div>
+	
+	<div class="contain-fluid">
+
+		<div class="hkt">
+			<img src="images/hkt_c.png">
+		</div>
+		<div class="slogan">
+			陪你以圓點說話
+		</div>
+
+		<div class="swiper-container kv">
+			<div class="swiper-pagination swiper-pagination-d onball hidd-xs"></div>
+			<ul class="mobile-onball onball visbl-xs">
+				<li><a data-href=".mb_kv"></a></li>
+				<li><a data-href=".cont_1"></a></li>
+				<li><a data-href=".cont_2"></a></li>
+				<li><a data-href=".ball_contain"></a></li>
+				<li><a data-href=".cont_4"></a></li>
+			</ul>
+			<div style="clear: both; height: 1px;"></div>
+			
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+		  <div class="swiper-slide">
+			<div class="mb_kv">
+				<div><img src="images/kv_c.png" class="img-center img-responsive kv1"></div>
+			</div>
+		  </div>
+
+		  <div class="swiper-slide">
+			<div class="contain cont_1">
+				<div class="content_txt">
+					<img src="images/content1_c.png" class="img-center img-responsive">
+				</div>
+				<div class="animation anibg">
+					<div class="txtcon">
+						<p>在日本以外的亞洲地區舉行的最大回顧展，我們可以親睹草間200件來自亞洲、歐洲及美國的博物館主要藏品及私人藏品、M+藏品及草間彌生的個人收藏，按時序及主題出發，由第二次世界大戰尾聲創作的繪畫至其最近期的沉浸式作品，圍繞「無限」、「積累」、「全面連結」、「生物宇宙」、「死亡」和「生命的力量」六個主題，全面地呈現草間藝術生涯的各個發展階段。</p>
+					</div>
+					
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path2 dark" d="M232.7,47.2c0,0-165.7,9.5-220.8,213.4C-34.7,433.5,185.6,566.8,307,565c71.4-1,286-75.8,285.7-247.4C592.6,184.7,444.6,7.7,232.7,47.2z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path1" d="M323.8,547.4c0,0,155,26,242.5-209.7C624,182.3,451.8,42.4,293.1,55.9C227.2,61.5,28.3,126.1,28.5,285C28.7,408,88.7,577.6,323.8,547.4z"/>
+					</svg>
+
+				</div>
+			</div>
+		  </div>
+		  <div class="swiper-slide">
+			<div class="contain cont_2">
+				<div class="content_txt">
+					<img src="images/content2_c.png" class="img-center img-responsive">
+				</div>
+				<div class="animation anibg">
+					<div class="txtcon">
+						<h4><span style="color: #00498f;">&bull;</span>《神經的死亡》（2022）</h4>
+						<p>M+委約創作的大型裝置色彩絢麗，立體地詮釋草間的經典主題「無限的網」。</p>
+						<h4><span style="color: #00498f;">&bull;</span>《圓點執念 ─ 渴望天堂的愛》（2022）</h4>
+						<p>是極具規模的沉浸式環境，在標誌性的鏡面空間注入圓點和懸浮氣球元素，塑造出彷如萬花筒世界的感官體驗。</p>
+						<h4><span style="color: #00498f;">&bull;</span>《南瓜》（2022）</h4>
+						<p>地下大堂，公眾可以欣賞到兩件南瓜大型雕塑。</p>
+					</div>
+					
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path2 dark" d="M232.7,47.2c0,0-165.7,9.5-220.8,213.4C-34.7,433.5,185.6,566.8,307,565c71.4-1,286-75.8,285.7-247.4C592.6,184.7,444.6,7.7,232.7,47.2z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path1" d="M323.8,547.4c0,0,155,26,242.5-209.7C624,182.3,451.8,42.4,293.1,55.9C227.2,61.5,28.3,126.1,28.5,285C28.7,408,88.7,577.6,323.8,547.4z"/>
+					</svg>
+
+				</div>
+			</div>
+		  </div>
+
+
+		  <div class="swiper-slide">
+			<div class="ball_contain ball2_active">
+
+				<div class="content_txt">
+					<img src="images/content3_c.png" class="img-center img-responsive">
+				</div>
+
+				<div class="ball ball1" data-ball="ball1">
+					<div class="painting clickhints" style="background-image: url('images/paint3.jpg');"></div>
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_b dark" d="M209.2,41.4c0,0-175.3,34.8-196,256.7C-3.2,473.9,188.7,616.7,352.3,571.7c67.9-18.7,263.7-125.1,232.5-291.5C560.6,151.3,449.6-35.9,209.2,41.4z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_a" d="M295.4,21.3c0,0-161.2-23.3-251.2,178c-71.4,159.5,57.5,380,225.1,389.9c69.6,4.1,292.9-46.2,316.7-212C604.3,248.8,545.2,25.4,295.4,21.3z"/>
+					</svg>
+
+					<div class="disc">草間彌生，《南瓜》，1998至2000年。藝術家自藏。<br>&#169; 草間彌生</div>
+				</div>
+				<div class="ball ball2 active" data-ball="ball2">
+					<div class="painting" style="background-image: url('images/paint4.jpg');"></div>
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_b dark" d="M209.2,41.4c0,0-175.3,34.8-196,256.7C-3.2,473.9,188.7,616.7,352.3,571.7c67.9-18.7,263.7-125.1,232.5-291.5C560.6,151.3,449.6-35.9,209.2,41.4z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_a" d="M295.4,21.3c0,0-161.2-23.3-251.2,178c-71.4,159.5,57.5,380,225.1,389.9c69.6,4.1,292.9-46.2,316.7-212C604.3,248.8,545.2,25.4,295.4,21.3z"/>
+					</svg>
+
+					<div class="disc">草間彌生，《自我消融》，1966至1974年。M+，香港。<br>&#169; 草間彌生。圖片：M+，香港。</div>
+				</div>
+				<div class="ball ball3" data-ball="ball3">
+					<div class="painting clickhints" style="background-image: url('images/paint2.jpg');"></div>
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_b dark" d="M209.2,41.4c0,0-175.3,34.8-196,256.7C-3.2,473.9,188.7,616.7,352.3,571.7c67.9-18.7,263.7-125.1,232.5-291.5C560.6,151.3,449.6-35.9,209.2,41.4z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_a" d="M295.4,21.3c0,0-161.2-23.3-251.2,178c-71.4,159.5,57.5,380,225.1,389.9c69.6,4.1,292.9-46.2,316.7-212C604.3,248.8,545.2,25.4,295.4,21.3z"/>
+					</svg>
+
+					<div class="disc">草間彌生，《當我看到人生中最大的夢想》，2017年。藝術家自藏，鳴謝大田秀則畫廊、維多利亞．米羅畫廊及卓納畫廊。<br>&#169; 草間彌生</div>
+				</div>
+
+				<div class="ball ball4" data-ball="ball4">
+					<div class="painting clickhints" style="background-image: url('images/paint1.jpg');"></div>
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_b dark" d="M209.2,41.4c0,0-175.3,34.8-196,256.7C-3.2,473.9,188.7,616.7,352.3,571.7c67.9-18.7,263.7-125.1,232.5-291.5C560.6,151.3,449.6-35.9,209.2,41.4z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path_ball_a" d="M295.4,21.3c0,0-161.2-23.3-251.2,178c-71.4,159.5,57.5,380,225.1,389.9c69.6,4.1,292.9-46.2,316.7-212C604.3,248.8,545.2,25.4,295.4,21.3z"/>
+					</svg>
+
+					<div class="disc">草間彌生，《在群花的痛苦之間，此刻永不終結。在天國的階梯前，我的心在它的溫柔中逝去。天空傳來呼喚，想必是透過那一片蔚藍。擁抱着虛幻的影子，積雨雲升起。吞食芙蓉的色彩，落下淚水的聲音》，2021年。藝術家自藏，鳴謝大田秀則畫廊。<br>&#169; 草間彌生</div>
+				</div>
+				
+
+			</div>
+			
+	  </div>
+
+		  <div class="swiper-slide">
+			<div class="contain cont_4">
+				<div class="content_txt">
+					<img src="images/content4_c.png" class="img-center img-responsive">
+				</div>
+				<div class="animation anibg">
+					<div class="txtcon">
+						<div>
+						<img src="images/m_plus_grey.png" class="img-center img-responsive m_plus_con4">
+						</div>
+						<h4 style="margin: 15px auto;">西展廳，展演空間，地下大堂，光庭，潛空間</h4>
+						<a href="https://www.mplus.org.hk/tc/exhibitions/yayoi-kusama-1945-to-now/" target="_blank" class="redbtn">更多資訊<img src="images/btn_arrow.png"></a>
+					</div>
+					
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path2 dark" d="M232.7,47.2c0,0-165.7,9.5-220.8,213.4C-34.7,433.5,185.6,566.8,307,565c71.4-1,286-75.8,285.7-247.4C592.6,184.7,444.6,7.7,232.7,47.2z"/>
+					</svg>
+
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+						<path class="morph-path1" d="M323.8,547.4c0,0,155,26,242.5-209.7C624,182.3,451.8,42.4,293.1,55.9C227.2,61.5,28.3,126.1,28.5,285C28.7,408,88.7,577.6,323.8,547.4z"/>
+					</svg>
+
+				</div>
+			</div>
+		  </div>
+
+
+        </div>
+		
+      </div>
+	<div class="visbl-xs" style="height: 120px;">&nbsp;</div>
+	<footer>
+		<!--img src="images/logo_d.png" class="img-center img-responsive hidd-xs">
+		<img src="images/logo_m.png" class="img-center img-responsive visbl-xs"-->
+		<div class="logocon">
+			<a href="https://1010.com.hk/tc/home" target="_blank"><img src="images/footer_10.png" class="img-responsive"></a>
+			<a href="https://www.theclub.com.hk/zh.html" target="_blank"><img src="images/footer_hkt.png" class="img-responsive"></a>
+			<a href="https://hkt-eye.com/zh" target="_blank"><img src="images/footer_eye.png" class="img-responsive"></a>
+			<a href="https://www.hkt-enterprise.com/tc" target="_blank"><img src="images/footer_hkt_ent.png" class="img-responsive"></a>
+		  </div>
+		
+		<div class="logocon">
+			<a href="https://www.hktpremier.com/chi/index.html" target="_blank"><img src="images/hkt_premi.png" class="img-responsive"></a>
+			<a href="https://www.netvigator.com/chi/index.html" target="_blank"><img src="images/footer_netvi.png" class="img-responsive"></a>
+		<a href="https://www.nowtv.now.com/" target="_blank"><img src="images/footer_nowtv.png" class="img-responsive"></a>
+		<a href="https://smartliving.hkt.com/chi/" target="_blank"><img src="images/footer_smartliving.png" class="img-responsive"></a></div>
+		
+	</footer>
+	</div>
+
+	<div class="fixbg"></div>
+
+
+</body>
+<script>
+// JavaScript Document
+
+$(document).ready(function(){
+
+	if($(window).width() >= 1024){
+		//first step shape is in svg tag
+		let shapes = [
+			{
+				d: "M363.8,554.4c0,0,115,9,202.5-226.7C624,172.3,417.8,42.4,259.1,55.9C193.2,61.5,28.3,146.1,28.5,305C28.7,428,128.7,584.6,363.8,554.4z"
+			},
+			{
+				d: "M323.8,547.4c0,0,155,26,242.5-209.7C624,182.3,451.8,42.4,293.1,55.9C227.2,61.5,28.3,126.1,28.5,285C28.7,408,88.7,577.6,323.8,547.4z"
+			}
+		]
+		let shapes_be = [
+			{
+				d: "M282.7,47.2c0,0-195.7,9.5-250.8,213.4C-14.7,433.5,145.6,566.8,267,565c71.4-1,326-55.8,325.7-227.4C592.6,204.7,494.6,7.7,282.7,47.2z"
+			},
+			{
+				d: "M232.7,47.2c0,0-165.7,9.5-220.8,213.4C-34.7,433.5,185.6,566.8,307,565c71.4-1,286-75.8,285.7-247.4C592.6,184.7,444.6,7.7,232.7,47.2z"
+			}
+		]
+
+		var morph1 = anime({
+			targets: '.morph-path1',
+			d: [
+				{value: shapes[0].d},
+				{value: shapes[1].d}
+			],
+			duration: 5000,
+			direction: 'alternate',
+			autoplay: true,
+			easing: 'easeInOutQuad',
+			elasticity: 0,
+			loop: true
+		});
+
+		var morph2 = anime({
+			targets: '.morph-path2',
+			d: [
+				{value: shapes_be[1].d},
+				{value: shapes_be[0].d}
+			],
+			duration: 3000,
+			direction: 'alternate',
+			autoplay: true,
+			easing: 'easeInOutQuad',
+			elasticity: 0,
+			loop: true
+		});
+
+
+		let ball_a = [
+			{
+				d: "M295.4,11.3c0,0-164.2,6.7-254.2,208c-71.4,159.5,60.5,340,228.1,349.9c69.6,4.1,292.9-66.2,316.7-232C604.3,208.8,545.2,15.4,295.4,11.3z"
+			},
+			{
+				d: "M295.4,21.3c0,0-161.2-23.3-251.2,178c-71.4,159.5,57.5,380,225.1,389.9c69.6,4.1,292.9-46.2,316.7-212C604.3,248.8,545.2,25.4,295.4,21.3z"
+			}
+		]
+		let ball_b = [
+			{
+				d: "M169.2,61.4c0,0-125.3,14.8-146,236.7C6.8,473.9,188.7,606.7,352.3,561.7c67.9-18.7,268.7-95.1,237.5-261.5C565.6,171.3,409.6-15.9,169.2,61.4z"
+			},
+			{
+				d: "M209.2,41.4c0,0-175.3,34.8-196,256.7C-3.2,473.9,188.7,616.7,352.3,571.7c67.9-18.7,263.7-125.1,232.5-291.5C560.6,151.3,449.6-35.9,209.2,41.4z"
+			}
+		]
+		var morph1 = anime({
+			targets: '.morph-path_ball_a',
+			d: [
+				{value: ball_a[0].d},
+				{value: ball_a[1].d}
+			],
+			duration: 5000,
+			direction: 'alternate',
+			autoplay: true,
+			easing: 'easeInOutQuad',
+			elasticity: 0,
+			loop: true
+		});
+		var morph1 = anime({
+			targets: '.morph-path_ball_b',
+			d: [
+				{value: ball_b[0].d},
+				{value: ball_b[1].d}
+			],
+			duration: 3000,
+			direction: 'alternate',
+			autoplay: true,
+			easing: 'easeInOutQuad',
+			elasticity: 0,
+			loop: true
+		});
+}
+
+
+/* Swiper
+**************************************************************/
+var indexSwiper = Swiper;
+var init = false;
+
+/* Which media query
+**************************************************************/
+function swiperMode() {
+    let mobile = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
+    let tablet = window.matchMedia('(min-width: 768px)');
+
+    // Enable (for mobile)
+    if(mobile.matches) {
+
+		//mb_kv
+		var hkt_h = $('.hkt').outerHeight();
+		var slogan_h = $('.slogan').outerHeight();
+		var onball_h = $('.onball').outerHeight();
+		var footer_h = $('footer').outerHeight();
+		$('.mb_kv').height($(window).height() - (hkt_h+slogan_h+onball_h+footer_h));
+		$(window).on('resize scroll', function() {
+			if ($(window).scrollTop() > 100) {
+                $('.mb_kv').height(360);
+            }else{
+				$('.mb_kv').height($(window).height() - (hkt_h+slogan_h+onball_h+footer_h));
+			}
+		});
+
+        indexSwiper.destroy();
+        init = false;
+
+    }
+    // Disable (for tablet)
+    else if(tablet.matches) {
+        if (!init) {
+            init = true;
+            indexSwiper = new Swiper('.kv.swiper-container', {
+				speed: 2000,
+				pagination: {
+					el: '.swiper-pagination-d',
+					clickable: true,
+				},
+				mousewheel: {
+					releaseOnEdges: true,
+				},
+				threshold : 30,
+				autoHeight : true,
+				breakpoints: {  
+					'1024': {
+						direction : 'vertical',
+						autoHeight : false,
+					}
+				},
+				on: {
+				slideChangeTransitionStart: function(){
+					//console.log(indexSwiper.realIndex);
+					if(indexSwiper.realIndex == 0){
+						$(".swiper-pagination-d").addClass('onball');
+					}else{
+						$(".swiper-pagination-d").removeClass('onball');
+					}
+					if(indexSwiper.realIndex == 3){
+						setTimeout(function(){ $(".painting").removeClass('clickhints'); }, 3000);
+					}
+				},
+			},
+			});
+        }
+    }
+
+}
+	/* On Load
+	**************************************************************/
+	window.addEventListener('load', function() {
+		swiperMode();
+	});
+	/* On Resize
+	**************************************************************/
+	window.addEventListener('resize', function() {
+		swiperMode();	
+	});
+
+
+	function checkVP() {
+		$.fn.isInViewport = function() {
+			var elementTop = $(this).offset().top;
+			var elementBottom = elementTop + $(this).outerHeight();
+
+			var viewportTop = $(window).scrollTop();
+			var viewportBottom = viewportTop + $(window).height();
+
+			return elementBottom > viewportTop && elementTop < viewportBottom;
+		};
+	}
+	$(window).on('resize scroll', function() {
+		checkVP();
+		if ($('.ball4').isInViewport()) {
+			setTimeout(function(){ $(".painting").removeClass('clickhints'); }, 2000);
+		}
+	});
+
+
+});
+  </script>
+
+</html>
